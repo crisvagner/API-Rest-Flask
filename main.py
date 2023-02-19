@@ -1,6 +1,9 @@
 from flask import jsonify
 from server import app, db
 
+# IMPORTANDO OS CONTROLLERS + AS ROTAS
+from src import controllers
+
 
 @app.before_first_request
 def create_tables():
