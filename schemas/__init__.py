@@ -10,4 +10,4 @@ class UserSchema(ma.Schema):
 # ESQUEMA DE TAREFAS USANDO ORM Marshmallow
 class NoteSchema(ma.Schema):
     class Meta:
-        fields = ('id', 'title', 'content')
+        fields = ('id', 'title', 'content', 'author')
