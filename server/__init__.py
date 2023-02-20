@@ -8,6 +8,7 @@ import os
 dotenv.load_dotenv(dotenv.find_dotenv())
 DATABASE = os.getenv("DATABASE")
 SECRET_KEY = os.getenv("SECRET_KEY")
+ADMINS = os.getenv("ADMINS")
 
 # CRIANDO E CONFIGURANDO INSTÂNCIA DO SERVIDOR
 app = Flask(__name__)
