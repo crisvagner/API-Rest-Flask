@@ -1,3 +1,4 @@
+from werkzeug.security import generate_password_hash
 from datetime import datetime, timedelta
 from flask import request, jsonify
 
@@ -56,21 +57,25 @@ def get_all_users(current_user):
         return jsonify({'message': 'Not Found'}), 404
 
 
-@app.route('/users/<int:id>', methods=['PUT'])
+@app.route('/users/<int:user_id>', methods=['PUT'])
 @jwt_required
-def update_user(current_user, id):
+def update_user(current_user, user_id):
     try:
         user_auth = user_schema.dump(current_user)
 
-        if user_auth['id'] == id:
-            email = request.json['email']
-            password = request.json['password']
+        if user_auth['id'] == user_id or user_auth['email'] in ADMINS:
+            user = Users.query.filter_by(id=user_id).first()
 
-            user = Users.query.get(id)
+            try:
+                email = request.json['email']
+                pwd = request.json['password']
+                password = generate_password_hash(pwd)
 
-            user.email = email
-            user.password = password
-            db.session.commit()
+                user.email = email
+                user.password = password
+                db.session.commit()
+            except:
+                return jsonify({'error': 'Este usuário já existe'}), 200
 
             return jsonify({'message': 'Usuário atualizado com sucesso'}), 200
 
