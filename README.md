@@ -5,8 +5,8 @@
 Implementar segurança com token JWT e melhorar a organização das rotas da API REST desenvolvida por mim em outro projeto usando o micro framework Flask e o Banco de Dados MySQL.
 
 - Os administradores podem deletar usuários.
-- Os administradores NÃO conseguem alterar os dados de posts/notes do usuários.
-- Os usuarios so podem deletar suas proprias contas e seus proprios posts/notes. Irá dar erro caso tente deletar algo ou atualizar algo que não os pertence.
+- Os administradores NÃO conseguem alterar os dados de posts/notes dos usuários.
+- Os usuários so podem deletar suas proprias contas e seus proprios posts/notes. Terá um mensagem de erro caso tente deletar algo ou atualizar algo que não os pertence.
 
 ### OBJETIVO
 
@@ -73,7 +73,8 @@ localhost:5000/users/id
 
 request = (apenas titulo,conteúdo)
 
-id do usuario autor vai no token
+Não é preciso informar o id do usuário autor pois o id está no token jwt e é passado na requisição automaticamente.
+Assim o post/note ficará ligado ao usuário.
 
 Rota para registrar um note:
 método POST
