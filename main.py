@@ -2,9 +2,10 @@ from flask import jsonify
 from server import app, db
 
 # IMPORTANDO OS CONTROLLERS + AS ROTAS
-from src import controllers
+import controllers
 
 
+# Criando as Tabelas antes da primeira requisição usando recurso do ORM SQLAlchemy
 @app.before_first_request
 def create_tables():
     db.create_all()
