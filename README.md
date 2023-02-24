@@ -87,7 +87,7 @@ Rota para retornar 1 note de 1 usuário pelo id:
 método GET
 
 ```bash
-localhost:5000/notes/note_id
+localhost:5000/notes/id
 ```
 
 Rota para retornar todos os notes de 1  usuário:
